@@ -4,6 +4,7 @@ import WPPConnect from "./src/Wrapper";
 
 export let secretKey: string = process.env.SECRET_KEY || '';
 export let host: string = process.env.host || 'http://localhost:21465/api'
+export const tokens: { [key: string]: string } = {}
 
 export function configure(config: { secretKey: string, host?: string }) {
     secretKey = config.secretKey

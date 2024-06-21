@@ -1,3 +1,4 @@
+import tokenIsCached from "../../etc/tokenIsCached";
 import Requests from "../../Requests";
 import { Message } from "../Chat/Types/MessageTypes";
 
@@ -14,7 +15,7 @@ export default function (config: config) {
         method: 'POST',
         url: `/${config.session}/send-message`,
         headers: {
-            Authorization: 'Bearer ' + config.token,
+                            Authorization: 'Bearer ' + tokenIsCached(config.session) || config.token,
         },
         data: {
             phone: config.phone,

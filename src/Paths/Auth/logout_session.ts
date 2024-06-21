@@ -1,3 +1,4 @@
+import tokenIsCached from "../../etc/tokenIsCached";
 import Requests from "../../Requests";
 
 type config = {
@@ -12,7 +13,7 @@ export default async function (config: config) {
             method: 'GET',
             url: `/${config.session}/logout-session`,
             headers: {
-                Authorization: 'Bearer ' + config.token,
+                Authorization: 'Bearer ' + tokenIsCached(config.session) || config.token,
             },
         }).catch((error) => {
             console.error(error);

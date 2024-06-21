@@ -1,3 +1,4 @@
+import tokenIsCached from "../../etc/tokenIsCached";
 import Requests from "../../Requests";
 import { Chat } from "../Chat/Types/ChatTypes";
 
@@ -12,7 +13,7 @@ export default function (config: config) {
         method: 'GET',
         url: `/${config.session}/contact/${config.phone}`,
         headers: {
-            Authorization: 'Bearer ' + config.token,
+            Authorization: 'Bearer ' + tokenIsCached(config.session) || config.token,
         }
     }).catch((error) => {
         console.error(error);

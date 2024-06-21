@@ -1,3 +1,4 @@
+import tokenIsCached from "../../etc/tokenIsCached";
 import Requests from "../../Requests";
 import { Message } from "./Types/MessageTypes";
 
@@ -13,7 +14,7 @@ export default async function (config: config) {
             method: 'GET',
             url: `/${config.session}/all-unread-messages`,
             headers: {
-                Authorization: 'Bearer ' + config.token,
+                Authorization: 'Bearer ' + tokenIsCached(config.session) || config.token,
             },
         }).catch((error) => {
             console.error(error);

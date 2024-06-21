@@ -1,3 +1,4 @@
+import tokenIsCached from "../../etc/tokenIsCached";
 import Requests from "../../Requests";
 
 type config = {
@@ -16,7 +17,7 @@ export default async function (config: config) {
             url: `/${config.session}/start-session`,
             data: config.body || {},
             headers: {
-                Authorization: 'Bearer ' + config.token,
+                Authorization: 'Bearer ' + tokenIsCached(config.session) || config.token,
             },
             method: 'POST',
         }).catch((error) => {

@@ -1,4 +1,5 @@
 import { configure } from "../index";
+import auth_all from "./Paths/Auth/auth_all";
 import check_connection from "./Paths/Auth/check_connection";
 import close_session from "./Paths/Auth/close_session";
 import generate_token from "./Paths/Auth/generate_token";
@@ -21,7 +22,8 @@ export default {
         get_qr,
         logout_session,
         start_session,
-        status_session
+        status_session,
+        auth_all
     },
     chat: {
         all_chats,

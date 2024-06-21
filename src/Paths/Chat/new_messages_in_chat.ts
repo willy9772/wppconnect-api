@@ -1,3 +1,4 @@
+import tokenIsCached from "../../etc/tokenIsCached";
 import Requests from "../../Requests";
 import { ChatAndMessage } from "./Types/ChatAndMessageTypes";
 
@@ -14,7 +15,7 @@ export default async function (config: config) {
             method: 'GET',
             url: `/${config.session}/all-new-messages`,
             headers: {
-                Authorization: 'Bearer ' + config.token,
+                Authorization: 'Bearer ' + tokenIsCached(config.session) || config.token,
             },
         }).catch((error) => {
             console.error(error);
